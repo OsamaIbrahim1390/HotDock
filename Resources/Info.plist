@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>HotDock</string>
+	<key>CFBundleExecutable</key>
+	<string>HotDock</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.hotdock.HotDock</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>HotDock</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>HotDock uses Apple Events to talk to other apps on this Mac: the Notes app, so you can load a note as a script, and the Spotify desktop app if you turn the mini player on. It never contacts any server and does not use your accounts.</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Personal use. No analytics, no telemetry, no network calls except Spotify album art when that feature is enabled.</string>
+</dict>
+</plist>
