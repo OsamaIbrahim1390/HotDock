@@ -42,11 +42,21 @@ Download the `.dmg` from [Releases](../../releases) and drag HotDock to Applicat
 > **The first launch will be blocked.** macOS will say *"Apple could not verify HotDock is free
 > of malware."* This app is not notarized — that requires a paid Apple Developer account.
 >
-> To open it: **right-click HotDock in Applications → Open → Open**. You only have to do this
-> once. Double-clicking won't work, and neither will dismissing the dialog.
+> On **macOS 15 and later**, Control-click → Open no longer works. Do this instead:
 >
-> If you'd rather not trust a stranger's binary, that's reasonable — build it from source
-> instead. It takes about a minute.
+> 1. Double-click HotDock and click **Done** on the warning. This attempt is what makes the
+>    next step appear — skipping it means there is nothing to approve.
+> 2. Open **System Settings → Privacy & Security** and scroll down to **Security**.
+> 3. Next to *"HotDock was blocked to protect your Mac"*, click **Open Anyway**.
+> 4. Authenticate, then click **Open Anyway** once more.
+>
+> The button only appears for a short while after the blocked attempt. If it has gone, just
+> double-click the app again to bring it back.
+>
+> Or, from Terminal: `xattr -d com.apple.quarantine /Applications/HotDock.app`
+>
+> If you would rather not trust a stranger's binary, that is reasonable — build it from source
+> instead. It takes about a minute and skips all of this.
 
 ### Build from source
 
