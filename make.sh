@@ -109,8 +109,9 @@ cmd_install() {
 # Honest note about what this does and does not get you: the result is signed with whatever
 # identity this Mac has, and it is NOT notarized — notarization needs a paid Apple Developer
 # account. macOS will therefore refuse to open it on first launch with "Apple could not verify
-# ... is free of malware". The README explains the right-click > Open workaround that users
-# have to do once. There is no way around that without the paid account.
+# ... is free of malware". On macOS 15+ the Control-click > Open bypass no longer works; it has
+# to be approved once in System Settings > Privacy & Security. The README spells this out.
+# There is no way around it without the paid account.
 cmd_dmg() {
     HOTDOCK_CONFIG=release
     CONFIG=release
@@ -136,8 +137,9 @@ cmd_dmg() {
     shasum -a 256 "$dmg"
     if [ -z "$(find_identity || true)" ]; then
         echo
-        echo "NOTE: ad-hoc signed and not notarized. Anyone downloading this will need to"
-        echo "      right-click the app and choose Open the first time. See the README."
+        echo "NOTE: ad-hoc signed and not notarized. On first launch macOS will block it;"
+        echo "      it has to be allowed once via System Settings > Privacy & Security"
+        echo "      (Control-click > Open stopped working in macOS 15). See the README."
     fi
 }
 
