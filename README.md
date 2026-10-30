@@ -63,7 +63,7 @@ Download the `.dmg` from [Releases](../../releases) and drag HotDock to Applicat
 ### Build from source
 
 ```sh
-git clone https://github.com/<you>/HotDock.git
+git clone [https://github.com/<you>/HotDock.git](https://github.com/OsamaIbrahim1390/HotDock)
 cd HotDock
 ./make.sh run
 ```
