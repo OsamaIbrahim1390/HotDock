@@ -12,10 +12,18 @@ struct ScriptControls: View {
     @Binding var drawerOpen: Bool
     @Binding var noteMode: Bool
     @Binding var playerVisible: Bool
-    /// Only offer the player toggle when there is a player to toggle.
-    let showsPlayerToggle: Bool
+    @Binding var spotifyEnabled: Bool
+    /// Hidden only when Spotify is not installed at all — there is nothing to offer then.
+    let spotifyInstalled: Bool
 
     private var spacing: CGFloat { availableHeight < 120 ? 7 : 10 }
+
+    private var spotifyLabel: String {
+        guard spotifyEnabled else {
+            return "Show what Spotify is playing — macOS will ask permission once"
+        }
+        return playerVisible ? "Hide the player" : "Show the player"
+    }
 
     var body: some View {
         VStack(spacing: spacing) {
@@ -36,12 +44,22 @@ struct ScriptControls: View {
                     drawerOpen.toggle()
                 }
             }
-            if showsPlayerToggle {
+            if spotifyInstalled {
+                // Always on screen, even before the feature is switched on. Hiding it meant
+                // nothing in the app hinted the player existed, so nobody found it. Dimmed
+                // until enabled; the first tap turns the feature on, which is also the only
+                // moment macOS asks to control Spotify.
                 ControlButton(symbol: "music.note",
-                              label: playerVisible ? "Hide the player" : "Show the player",
-                              isActive: playerVisible) {
+                              label: spotifyLabel,
+                              isActive: spotifyEnabled && playerVisible,
+                              dimmed: !spotifyEnabled) {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
-                        playerVisible.toggle()
+                        if spotifyEnabled {
+                            playerVisible.toggle()
+                        } else {
+                            spotifyEnabled = true
+                            playerVisible = true
+                        }
                     }
                 }
             }
@@ -62,6 +80,8 @@ struct ControlButton: View {
     var size: CGFloat = 11
     /// Draws the button lit, for toggles that are currently on.
     var isActive: Bool = false
+    /// Draws the button faint, for a feature that is available but not switched on yet.
+    var dimmed: Bool = false
     let action: () -> Void
 
     @State private var hovering = false
@@ -70,7 +90,7 @@ struct ControlButton: View {
         Image(systemName: symbol)
             .font(.system(size: size, weight: .semibold))
             .frame(width: 20, height: 17)
-            .foregroundStyle(.white.opacity(hovering || isActive ? 0.95 : 0.6))
+            .foregroundStyle(.white.opacity(hovering ? 0.95 : (isActive ? 0.95 : (dimmed ? 0.3 : 0.6))))
             .background(
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .fill(.white.opacity(hovering ? 0.18 : (isActive ? 0.12 : 0)))

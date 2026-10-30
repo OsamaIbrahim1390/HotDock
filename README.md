@@ -21,6 +21,8 @@ note stays pinned under the script so a name or a number you must not get wrong 
 
 **Spotify.** An optional column showing the album art as a spinning record, with transport
 controls and volume. Talks to the Spotify app on your Mac, not to Spotify's servers.
+**Off until you switch it on** in Settings → Spotify mini player, so it never asks for
+permission you did not ask for.
 
 **It hides.** By default the card is tucked behind the notch and slides down when you move the
 cursor into it. A Siri-coloured outline around the notch tells you it's running.
@@ -93,7 +95,7 @@ The card has three columns: the **script**, a narrow strip of **controls**, and 
 | ↺ | back to the top |
 | ✎ | turn the card into a note editor |
 | ☰ | drawer: speed, text size, overlay size, loading a script |
-| ♪ | show or hide the player |
+| ♪ | show or hide the player — **only appears once the Spotify player is switched on** |
 
 **Scrolling.** Hover the text to pause. Two-finger scroll over it to move by hand. Drag the
 scrollbar to scrub — its length also shows how much of the script is left.

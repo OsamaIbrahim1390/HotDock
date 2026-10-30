@@ -79,7 +79,8 @@ struct OverlayRootView: View {
                                    drawerOpen: $overlay.isDrawerOpen,
                                    noteMode: $overlay.isNoteMode,
                                    playerVisible: $settings.playerVisible,
-                                   showsPlayerToggle: settings.spotifyEnabled && spotify.showsPanel)
+                                   spotifyEnabled: $settings.spotifyEnabled,
+                                   spotifyInstalled: SpotifyController.isInstalled)
                         .fixedSize()
                     Spacer(minLength: 0)
                     StatusDot(engine: engine)
