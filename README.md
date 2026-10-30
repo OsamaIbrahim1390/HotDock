@@ -7,8 +7,6 @@ Take timestamped notes without leaving what you're doing. Control Spotify from t
 
 Menu bar only — no Dock icon, no window in your way.
 
-![HotDock overlay](docs/screenshot.png)
-
 ---
 
 ## What it does
@@ -158,17 +156,6 @@ not part of any other app's window, so a single-window share cannot include it.
    versions; a result from last month is not evidence about this month.
 
 If you need a guarantee, don't use an overlay — use a second device.
-
-## Known issues
-
-- **The notch glow can stay visible during full-screen video.** Detection works when the
-  active Space is full-screen *and* the frontmost app holds a display-sleep assertion, but it
-  doesn't catch every case. Workaround: menu bar → turn **Notch Glow** off.
-- **Not notarized**, so first launch needs right-click → Open. Needs a paid Apple Developer
-  account to fix.
-- **Permissions reset on rebuild** when building from source without a signing identity. Add
-  an Apple ID in Xcode → Settings → Accounts (free) and `make.sh` picks it up.
-- Editing a note changes its identity, so an unpinned note reappears pinned after you edit it.
 
 ## Not built yet
 
